@@ -5,9 +5,9 @@ const router = express.Router()
 
 // routes
 
-router.post('/create-task', async (req, res) => {
+router.post('/create-task', async (req, res) => {  
     try {
-        const existingTask = await Task.findOne({ email: req.body.name })
+        const existingTask = await Task.findOne({ name: req.body.name })
         if (existingTask) return res.json({ error: 'Task already exists!' })
 
         const newTask = new Task({
